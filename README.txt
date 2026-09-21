@@ -1,150 +1,89 @@
-Lady Stalker English Translation Addendum v1.2.9
-===============================================
+Lady Stalker English Translation Addendum v1.4
+By OrcMasterJones, building on RetchErezzed's English translation
 
-This hack is an addendum to RetchErezzed's English machine-translation
-patch for Lady Stalker: Kako kara no Chousen.
-
-Version 1.2.9 fixes the reproduced HUD-background flashes when using
-Medicine and confirming Spring destinations, including Lady alone. It also
-fixes the corresponding pulse when a full Battle Items bag opens.
-The local menu-upload repairs preserve native item effects, quantities,
-party selection, and frame pacing. No global interrupt hook was added.
-
-Shopkeepers retain their full introductory greeting and conversational
-confirmations. Three repeated purchase prompts are shorter, bringing the
-measured repeated-purchase text time closer to the Japanese version.
-
-All earlier addendum improvements are included: menu and HUD repairs,
-cursed-status icons and equipment messages, native quantity presentation,
-battle healing-target windows, connected K/Z glyphs, shorter battle notices,
-and the agreed enemy-name and matching dialogue corrections.
-
-Controlled emulator regression checks cover all four party configurations,
-small and full varied bags, field and battle targeting, menu transitions,
-Storage/Retrieval, cursed gear, usable items, complete Spring warps, and
-all 124 item entries in the affected battle-name slots. Test methods and
-measurement limits are documented in the separate Source and QA archive.
-This is not a new full story playthrough or real-hardware certification.
-
-Both patches below include the complete addendum. No ROM image is included.
-
+This cumulative release includes all earlier Addendum improvements, plus
+full-name battle and warp menus, clearer secondary Status pages, event-flash
+repairs, and reviewed translation and message-layout improvements.
 
 PATCHING
-========
+--------
+Use a fresh copy of ONE of the two supported source ROMs below. Both must
+be headerless (no 512-byte copier header).
 
-Use exactly one of the two included IPS patches:
+1. Original Japanese ROM:
+   Apply LadyStalker_Patch_for_Japanese_ROM.ips
+   Size: 2,621,440 bytes
+   CRC32: 4390D719
+   SHA-256:
+   d0275f6fdc38f26b53b017bdd7fe26e13b9871a93671c76f48800e4f733b2385
 
-1. LadyStalker_Patch_for_Japanese_ROM.ips
-   Apply this directly to the original headerless Japanese ROM.
+2. Original English translation v1.0 ROM:
+   Apply LadyStalker_Patch_for_ENG_v1.0_Rom.ips
+   Size: 4,194,304 bytes
+   CRC32: 3A59468A
+   SHA-256:
+   3a698798b844e248cd3cf612941d18d1837bc6af1805df18b6eff609bc97e3cf
 
-   Expected source:
-     Size:    2,621,440 bytes
-     SHA-256: d0275f6fdc38f26b53b017bdd7fe26e13b9871a93671c76f48800e4f733b2385
+Apply exactly one patch with an IPS-compatible patcher. Do not stack the
+two patches or apply either one over an earlier Addendum ROM. IPS does not
+check the source for you, so verify the size and hash before patching.
 
-2. LadyStalker_Patch_for_ENG_v1.0_Rom.ips
-   Apply this to a ROM already patched with RetchErezzed's ENG v1.0 patch.
+Both routes produce the same v1.4 ROM:
+   Suggested filename: LadyStalker_English_Addendum_v1.4.sfc
+   Size: 4,194,304 bytes
+   CRC32: 7C236DBA
+   SHA-256:
+   e8490da4e6e0cc5681ebe0e9c566471d989a24489867785765ef5f22440443cd
 
-   Expected source:
-     Size:    4,194,304 bytes
-     SHA-256: 3a698798b844e248cd3cf612941d18d1837bc6af1805df18b6eff609bc97e3cf
+This archive contains patches and documentation. Supply your own source
+ROM. SHA256SUMS.txt lists the hashes of the five package payload files.
 
-Apply the appropriate patch with an IPS-compatible patcher. Both patches
-produce the same complete v1.2.9 ROM.
+WHAT'S NEW
+----------
+- Full item names in the two-column Battle Items menu, with all 12 slots
+  and native quantities retained.
+- Full learned abilities and spells in secondary Status, including Lady
+  Special, with Field Spells and Battle Spells inside a complete border.
+- Full destination names in Spring and Zap, with consistent Death Vegas
+  spelling, King Baron's Manor, and improved V/v lettering.
+- Full Double Up in Battle Magic and several item-lettering refinements.
+- Connect the diagonal leg of narrow capital R letters in item, spell and
+  destination names without changing their width or spacing.
+- Repairs for several key-item event flashes, including the bookcase and
+  both investigated Baron's Eye platform flashes.
+- Reviewed translation corrections, restored ancient-name symbols, shorter
+  battle notices, and cleaner line breaks where the English text fits.
+- Keeps Spring/Zap names and dialogue clean through opening, cancellation,
+  casting and closing; retains the original two-line action messages.
+- Preserves the question mark in the shop Sell prompt with full inventories.
+- Clears stale text-cache data after canceling Spring/Zap, preventing blank
+  Sell item names and subsequent screen corruption.
 
-Do not apply both patches, and do not apply either patch over an earlier
-version of this addendum. To upgrade, patch a fresh copy of one of the two
-supported sources above.
+See CHANGELOG.txt for details, verification limits and earlier history.
 
-Expected patched v1.2.9 ROM:
-  Size:    4,194,304 bytes
-  SHA-256: ed72ad227207fb65ad8d3cdd8cfe0a8c21564d7ca147d090670b48d3ae15bfe4
+EXISTING SAVES
+--------------
+Keep a backup of your save. The battery-save format (.srm) is unchanged.
+Copy or rename the save to match the new ROM's filename, then boot the new
+ROM and use the game's Continue option. Some emulators manage save names
+or locations differently.
 
-Existing in-game saves remain compatible. Back up your save, boot the new
-ROM, and load it through the game's Continue menu. If your emulator matches
-saves by filename, give the .srm file the same basename as the new ROM.
-Use an in-game save when upgrading; old emulator savestates can retain
-graphics and menu data from the previous patch.
+Use a battery save when moving between versions. Older emulator save
+states can retain graphics, text pointers and menu data from the previous
+build. A new game is not required.
 
+NOTES AND FEEDBACK
+------------------
+Component validation includes broad emulator regression runs, per-frame menu
+checks and native save/reload tests. The final shop repair has additional
+cross-menu, continuous-session and warp comparisons. Both supported patch
+routes reconstruct the exact author-approved ROM. Expanded menu rendering
+and revised text can change fine timing; this version does not promise
+identical audio samples or RNG sequences to previous builds. Some visual
+quirks shared with the Japanese game remain unchanged.
 
-VERSION HISTORY
-===============
+This package does not claim a new complete playthrough or certification
+on physical hardware. If you find a problem, include the version, emulator,
+steps to reproduce it, a screenshot, and a nearby battery save or save state.
 
-v1.2.9 - 9 September 2026 (HUD polish and shop cadence)
-  - Remove Medicine/Spring HUD-background flashes and the full-bag battle pulse.
-  - Preserve the native battle-name renderer CPU budget and sound timing.
-  - Retain conversational shop text while shortening repeated purchases.
-  - Recheck the affected menu, item, warp, audio, and party-size paths.
-
-v1.2.8 - 9 September 2026 (release)
-  - Restore exact original field-popup audio timing.
-  - Preserve battle target repair and its existing sound timing.
-  - Full controlled menu/HUD regression repeated on this build.
-
-v1.2.7 - 9 September 2026 (target-window repair)
-  - Battle healing-recipient separators and caption repaired.
-  - Full controlled menu/HUD regression repeated on this build.
-
-v1.2.6 - 9 September 2026 (enemy names)
-  - Six agreed names and their three dialogue references updated.
-
-v1.2.5 - 9 September 2026 (battle text)
-  - Applied the seven approved message changes listed above.
-
-v1.2.4 - 9 September 2026 (name polish)
-  - Applied five agreed names in both text tables and updated Full Heal art.
-
-v1.2.3 - 8 September 2026
-  - Filled missing pixels in narrow capital K and Z across pre-rendered
-    spell and item names, retaining the same widths, spacing, and wording.
-
-v1.2.2 - 8 September 2026
-  - Restored the Gear bottom edge in the same upload that closes a cursed
-    item message, eliminating the briefly missing strip.
-
-v1.2.1 - 8 September 2026
-  - Fixed the remaining one-frame black strip when Retrieval redraws after
-    taking an item while stored entries remain.
-  - Protected the native cursed-status graphic in Battle Magic lists.
-  - Verified Lady-and-Yosh menus and actions with distinct small/full bags,
-    and checked the Retrieval correction with all four party combinations.
-
-v1.2 - 8 September 2026
-  - Fixed intermittent black-line flashes during menu transitions, including
-    Battle Items and Storage/Retrieval paths.
-  - Fixed HUD health-bar graphics during health changes.
-  - Fixed long-name Gear rendering and menu transitions with full inventories.
-  - Fixed equipment preview text, including DEF and Can't Equip, after cursed
-    equipment and failed removal attempts.
-  - Restored native item-quantity presentation through menu actions.
-  - Fixed Give so a newly received item's name and quantity appear together.
-  - Restored the original cursed-status graphic in the HUD and party selector
-    after closing and reopening menus, including full Battle Items lists.
-  - Shortened critical-hit notices to "[Name] lands a crit!" and
-    "[Name] takes a crit!".
-
-v1.1 - 3 September 2026
-  - Rewrote the eight library story-puzzle fragments so their correct order
-    can be inferred from the English text.
-  - Renamed the library book item "Baron-kun 4" to "Little Baron 4" to match
-    the bookshelf clue.
-  - Translated the slot-machine prize message as "COINS WON!" while retaining
-    the game's dynamically generated prize amount.
-
-v1.0 - 29 August 2026
-  - Initial release.
-  - Cleaned up menus and restored important English text.
-  - Added Landstalker-style dialogue font and proportional item-menu text.
-  - Restored the original NPC voice sounds.
-
-
-CREDITS
-=======
-
-Original English machine-translation patch: RetchErezzed
-English Translation Addendum: OrcMasterJones
-
-RetchErezzed's translation:
-https://www.romhacking.net/translations/7687/
-
-Addendum page:
-https://www.romhacking.net/hacks/9938/
+Credits and project links are in CREDITS.txt.
